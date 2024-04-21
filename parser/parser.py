@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import NoSuchElementException
 
 import time
 
@@ -50,9 +51,12 @@ class WBParser(Parser):
         img_link = card.find_element(By.TAG_NAME, "img").get_attribute("src")
         
         brand = card.find_element(By.CLASS_NAME, "product-card__brand").text
-
-        lower_price = card.find_element(By.CLASS_NAME, "price__lower-price").text.replace(" ", "")
-        prev_price = card.find_element(By.TAG_NAME, "del").text.replace(" ", "")
+        try:
+            lower_price = card.find_element(By.CLASS_NAME, "price__lower-price").text.replace(" ", "")
+            normal_price = card.find_element(By.TAG_NAME, "del").text.replace(" ", "")
+        except NoSuchElementException:
+            normal_price = card.find_element(By.CLASS_NAME, "price__lower-price").text.replace(" ", "")
+            lower_price = None
 
         rating = card.find_element(By.CLASS_NAME, "address-rate-mini").text
 
@@ -61,8 +65,8 @@ class WBParser(Parser):
             "Название": label,
             "Изображение": img_link,
             "Производитель": brand,
-            "Цена со скидкой": lower_price,
-            "Цена без скидки": prev_price,
+            "Цена со скидкой": lower_price if lower_price else normal_price,
+            "Цена без скидки": normal_price,
             "Рейтинг": rating
         }   
 
