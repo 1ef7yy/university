@@ -28,7 +28,7 @@ class WBParser(Parser):
         data = []
         for page in range(pages_count):
             self.driver.get(f"{self.link}&page={page+1}")
-            super().scroll(4, 1)
+            super().scroll(3, 1)
             cards = self.driver.find_elements(By.CLASS_NAME, "product-card__wrapper")
             for card in cards:
                 data.append(self.get_card_data(card))
