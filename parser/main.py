@@ -1,3 +1,5 @@
+# https://github.com/1ef7yy/university/tree/main/parser
+
 from parser import WBParser
 from openpyxl import Workbook
 
