@@ -23,11 +23,16 @@ class Parser:
 
 
 class WBParser(Parser):
-    def get_cards(self):
-        self.driver.get(self.link)
-        super().scroll(10, 1)
-        cards = self.driver.find_elements(By.CLASS_NAME, "product-card__wrapper")
-        return cards
+    def get_cards(self, pages_count):
+        data = []
+        for page in range(pages_count):
+            self.driver.get(f"{self.link}&page={page+1}")
+            super().scroll(4, 1)
+            cards = self.driver.find_elements(By.CLASS_NAME, "product-card__wrapper")
+            for card in cards:
+                data.append(self.get_card_data(card))
+
+        return data
     
 
     
@@ -46,19 +51,19 @@ class WBParser(Parser):
         
         brand = card.find_element(By.CLASS_NAME, "product-card__brand").text
 
-        lower_price = card.find_element(By.CLASS_NAME, "price__lower-price").text
-        prev_price = card.find_element(By.TAG_NAME, "del").text
+        lower_price = card.find_element(By.CLASS_NAME, "price__lower-price").text.replace(" ", "")
+        prev_price = card.find_element(By.TAG_NAME, "del").text.replace(" ", "")
 
         rating = card.find_element(By.CLASS_NAME, "address-rate-mini").text
 
         data = {
-            "link": link,
-            "label": label,
-            "img": img_link,
-            "brand": brand,
-            "curr_price": lower_price if lower_price else None,
-            "prev_price": prev_price if prev_price else None,
-            "rating": rating
+            "Ссылка": link,
+            "Название": label,
+            "Изображение": img_link,
+            "Производитель": brand,
+            "Цена со скидкой": lower_price,
+            "Цена без скидки": prev_price,
+            "Рейтинг": rating
         }   
 
         return data
