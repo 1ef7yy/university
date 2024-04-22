@@ -8,3 +8,4 @@ def write_to_excel(items):
         ws.append(list(item.values()))
 
     wb.save("parser/wildberries.xlsx")
+    

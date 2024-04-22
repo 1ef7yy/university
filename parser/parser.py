@@ -6,8 +6,6 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 
 
-
-
 class Parser:
     def __init__(self, link):
         self.link = link
@@ -71,6 +69,3 @@ class WBParser(Parser):
         }   
 
         return data
-    
-    
-
