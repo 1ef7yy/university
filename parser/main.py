@@ -1,6 +1,6 @@
 # https://github.com/1ef7yy/university/tree/main/parser
 
-from parser import WBParser
+from parsing import WBParser
 from excel import write_to_excel
 
 
