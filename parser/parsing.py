@@ -26,17 +26,35 @@ class WBParser(Parser):
     def get_cards(self, pages_count):
         data = []
         for page in range(pages_count):
-            self.driver.get(f"{self.link}&page={page+1}")
+            page_link = f"{self.link}&page={page+1}"
+            self.driver.get(page_link)
             super().scroll(3, 1)
             cards = self.driver.find_elements(By.CLASS_NAME, "product-card__wrapper")
             for card in cards:
-                data.append(self.get_card_data(card))
-
+                card_data = self.get_card_data(card)
+                card_data["Описание"] = self.get_card_desc(card_link=card_data["Ссылка"])
+                data.append(card_data)
+                print(card_data)
         return data
     
 
-    
+    def get_card_desc(self, card_link):
+        self.driver.execute_script(f'''window.open("{card_link}","_blank");''')
+        time.sleep(2)
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        self.scroll(1, 1)
+        
+        desc_btn = self.driver.find_element(By.CSS_SELECTOR, "button.product-page__btn-detail.j-wba-card-item.j-wba-card-item-show.j-wba-card-item-observe")
+        desc_btn.click()
+        time.sleep(1)
 
+        desc = self.driver.find_element(By.CLASS_NAME, "option__text").text
+
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
+        time.sleep(2)
+
+        return desc
 
     def get_card_data(self, card):
 
@@ -58,6 +76,7 @@ class WBParser(Parser):
             lower_price = None
 
         rating = card.find_element(By.CLASS_NAME, "address-rate-mini").text
+
 
         data = {
             "Ссылка": link,
