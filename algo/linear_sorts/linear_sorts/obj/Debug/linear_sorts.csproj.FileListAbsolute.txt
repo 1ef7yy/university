@@ -1,0 +1,7 @@
+D:\Programming\uni\university\algo\linear_sorts\linear_sorts\bin\Debug\linear_sorts.exe.config
+D:\Programming\uni\university\algo\linear_sorts\linear_sorts\bin\Debug\linear_sorts.exe
+D:\Programming\uni\university\algo\linear_sorts\linear_sorts\bin\Debug\linear_sorts.pdb
+D:\Programming\uni\university\algo\linear_sorts\linear_sorts\obj\Debug\linear_sorts.csproj.AssemblyReference.cache
+D:\Programming\uni\university\algo\linear_sorts\linear_sorts\obj\Debug\linear_sorts.csproj.CoreCompileInputs.cache
+D:\Programming\uni\university\algo\linear_sorts\linear_sorts\obj\Debug\linear_sorts.exe
+D:\Programming\uni\university\algo\linear_sorts\linear_sorts\obj\Debug\linear_sorts.pdb
