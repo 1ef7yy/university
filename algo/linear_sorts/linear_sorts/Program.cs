@@ -59,8 +59,8 @@ namespace linear_sorts
             Stopwatch stopwatch = new Stopwatch();
             Random rand = new Random();
 
-            /*UInt32 QUEUE_SIZE = 100;
-            
+            uint QUEUE_SIZE = 100;
+
 
             for (int i = 0; i < 10; QUEUE_SIZE += 50)
             {
@@ -70,7 +70,7 @@ namespace linear_sorts
                     queue.Enqueue(rand.Next(-10000, 10000));
 
                 stopwatch.Reset();
-                
+
 
                 stopwatch.Start();
 
@@ -87,9 +87,9 @@ namespace linear_sorts
                 Console.WriteLine("Sort time : " + stopwatch.Elapsed.Seconds + ":" + stopwatch.Elapsed.Milliseconds + "\n");
 
                 queue = null;
-                
-            }*/
-            
+
+            }
+
             int STACK_SIZE = 1000;
 
             Stack stack = new Stack(STACK_SIZE);
