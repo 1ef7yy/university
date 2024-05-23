@@ -33,6 +33,22 @@ namespace linear_sorts
             return sort_n_op;
         }
 
+        public static void BubbleSort(Stack stack)
+        {
+            for (int i = 0; i < stack.Count - 1; i++)
+            {
+                for (int j = 0; j < stack.Count - i - 1; j++)
+                {
+                    if (stack[j] > stack[j + 1])
+                    {
+                        var tempVar = stack[j];
+                        stack[j] = stack[j + 1];
+                        stack[j + 1] = tempVar;
+                    }
+                }
+            }
+        }
+
 
         static void Main(string[] args)
         {
@@ -43,7 +59,7 @@ namespace linear_sorts
             Stopwatch stopwatch = new Stopwatch();
             Random rand = new Random();
 
-            UInt32 QUEUE_SIZE = 100;
+            /*UInt32 QUEUE_SIZE = 100;
             
 
             for (int i = 0; i < 10; QUEUE_SIZE += 50)
@@ -72,7 +88,22 @@ namespace linear_sorts
 
                 queue = null;
                 
-            }
+            }*/
+            
+            int STACK_SIZE = 1000;
+
+            Stack stack = new Stack(STACK_SIZE);
+
+            stack.Push(2);
+            stack.Push(3);
+            stack.Push(4);
+
+            stack.Push(10);
+            stack.Push(1);
+
+            BubbleSort(stack);
+
+            stack.Print();
             
             
 
