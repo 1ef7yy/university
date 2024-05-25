@@ -35,13 +35,17 @@ namespace linear_sorts
 
         public static void BubbleSort(Stack stack)
         {
+            stack.n_op += 5;
             for (int i = 0; i < stack.Count - 1; i++)
             {
+                stack.n_op += 6;
                 for (int j = 0; j < stack.Count - i - 1; j++)
                 {
+                    stack.n_op += 4;
                     if (stack[j] > stack[j + 1])
                     {
-                        var tempVar = stack[j];
+                        stack.n_op += 8;
+                        int tempVar = stack[j];
                         stack[j] = stack[j + 1];
                         stack[j + 1] = tempVar;
                     }
@@ -59,7 +63,7 @@ namespace linear_sorts
             Stopwatch stopwatch = new Stopwatch();
             Random rand = new Random();
 
-            uint QUEUE_SIZE = 100;
+            /*uint QUEUE_SIZE = 100;
 
 
             for (int i = 0; i < 10; QUEUE_SIZE += 50)
@@ -88,7 +92,7 @@ namespace linear_sorts
 
                 queue = null;
 
-            }
+            }*/
 
             int STACK_SIZE = 1000;
 
@@ -104,6 +108,7 @@ namespace linear_sorts
             BubbleSort(stack);
 
             stack.Print();
+            Console.WriteLine(stack.n_op);
             
             
 

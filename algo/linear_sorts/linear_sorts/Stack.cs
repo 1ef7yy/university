@@ -6,9 +6,12 @@ namespace linear_sorts
     {
         private int[] stackArray;
         private int top;
-        private int count;
+        private long count;
+        private int size;
 
-        public int Count { 
+        public uint n_op = 0;
+
+        public long Count { 
             get => count; 
             set {
                 count = value;
@@ -18,6 +21,7 @@ namespace linear_sorts
         public Stack(int size)
         {
             stackArray = new int[size];
+            this.size = size;
             top = -1;
         }
 
@@ -25,11 +29,39 @@ namespace linear_sorts
         {
             get
             {
-                if (i < 0 || i > top)
+                if (i < -1 || i > top)
                 {
                     throw new IndexOutOfRangeException("Index out of range");
                 }
-                return stackArray[i];
+                else
+                {
+                    n_op += 1;
+                    Stack temp = new Stack(this.size);
+
+                    n_op += 4;
+                    for (int j = top; j > i; j--)
+                    {
+                        n_op += 2;
+                        temp.Push(this.Pop());
+                    }
+
+                    n_op += 2;
+                    int res = Pop();
+
+                    n_op += 2;
+                    this.Push(res);
+
+                    n_op += 1;
+                    while (!temp.IsEmpty())
+                    {
+                        n_op += 2;
+                        int val = temp.Pop();
+                        n_op += 2;
+                        this.Push(val);
+                    }
+
+                    return res;
+                }
             }
             set
             {
@@ -37,30 +69,59 @@ namespace linear_sorts
                 {
                     throw new IndexOutOfRangeException("Index out of range");
                 }
-                stackArray[i] = value;
+                else
+                {
+                    n_op += 1;
+                    Stack temp = new Stack(this.size);
+
+                    n_op += 4;
+                    for (int j = top; j > i; j--)
+                    {
+                        n_op += 2;
+                        temp.Push(this.Pop());
+                    }
+
+                    n_op += 3;
+                    Pop();
+                    Push(value);
+
+                    while (!temp.IsEmpty())
+                    {
+                        n_op += 2;
+                        int val = temp.Pop();
+
+                        n_op += 2;
+                        this.Push(val);
+                    }
+                }
             }
         }
 
         public void Push(int value)
         {
+            n_op += 1;
             if (IsFull())
             {
                 Console.WriteLine("Stack is full. Cannot push.");
                 return;
             }
+            n_op += 1;
             count++;
+            n_op += 3;
             stackArray[++top] = value;
         }
 
         public int Pop()
         {
-            if (IsEmpty())
-            {
-                Console.WriteLine("Stack is empty. Cannot pop.");
-                return -1;
-            }
+            n_op += 1;
             count--;
-            return stackArray[top--];
+            n_op += 2;
+            int top_value = stackArray[top];
+            n_op += 1;
+            stackArray[top] = 0;
+            n_op += 1;
+            top--;
+            return top_value;
         }
 
         public int Peek()
@@ -76,20 +137,21 @@ namespace linear_sorts
 
         public bool IsEmpty()
         {
-            return top == -1;
+            return Count == 0;
         }
 
         public bool IsFull()
         {
+            n_op += 3;
             return top == stackArray.Length - 1;
         }
 
         public void Print()
         {
             int[] displayArray = new int[count];
-            for (int i = count - 1; i >= 0; i--)
+            for (long i = count - 1; i >= 0; i--)
             {
-                displayArray[i] = stackArray[i];
+                displayArray[i] = (int)stackArray[i];
             }
             
             for (int i = 0; i < displayArray.Length; i++)
