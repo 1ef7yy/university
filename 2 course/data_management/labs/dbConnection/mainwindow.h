@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include "connectiondialog.h"
-#include "ui_connectiondialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

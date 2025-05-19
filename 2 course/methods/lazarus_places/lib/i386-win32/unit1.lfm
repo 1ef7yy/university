@@ -1,0 +1,98 @@
+object Form1: TForm1
+  Left = 255
+  Height = 583
+  Top = 144
+  Width = 800
+  Caption = 'Известные города России'
+  ClientHeight = 583
+  ClientWidth = 800
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '3.6.0.0'
+  object ListBox1: TListBox
+    Left = 10
+    Height = 523
+    Top = 10
+    Width = 157
+    Anchors = [akTop, akLeft, akBottom]
+    ItemHeight = 0
+    TabOrder = 0
+    OnClick = ListBox1Click
+    OnSelectionChange = ListBox1SelectionChange
+  end
+  object LabelName: TLabel
+    Left = 173
+    Height = 1
+    Top = 221
+    Width = 607
+    Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight]
+    Font.Height = -21
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object ImageDirector: TImage
+    Left = 179
+    Height = 195
+    Top = 10
+    Width = 601
+    Anchors = [akTop, akLeft, akRight]
+    Center = True
+    Proportional = True
+    Stretch = True
+  end
+  object MemoDesc: TMemo
+    Left = 179
+    Height = 273
+    Top = 260
+    Width = 601
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ReadOnly = True
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+    WantReturns = False
+  end
+  object MainMenu1: TMainMenu
+    Left = 40
+    Top = 40
+    object MenuItemHelp: TMenuItem
+      Caption = 'Справка'
+      object MenuItemContent: TMenuItem
+        Caption = 'Содержание'
+        OnClick = MenuItemContentClick
+      end
+      object MenuItemSeparator: TMenuItem
+        Caption = '-'
+      end
+      object MenuItemAbout: TMenuItem
+        Caption = 'О программе'
+        OnClick = MenuItemAboutClick
+      end
+    end
+  end
+  object SQLite3Connection1: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    AlwaysUseBigint = False
+    Left = 120
+    Top = 40
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = SQLite3Connection1
+    Left = 120
+    Top = 96
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = SQLite3Connection1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    Left = 120
+    Top = 152
+  end
+end
