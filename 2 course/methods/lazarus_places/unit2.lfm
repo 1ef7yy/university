@@ -1,11 +1,12 @@
 object Form2: TForm2
-  Left = 741
-  Height = 194
-  Top = 177
-  Width = 484
+  Left = 289
+  Height = 388
+  Top = 322
+  Width = 968
   Caption = 'Form2'
-  ClientHeight = 194
-  ClientWidth = 484
+  ClientHeight = 388
+  ClientWidth = 968
+  DesignTimePPI = 192
   Icon.Data = {
     A63200000000010001000000000001002000903200001600000089504E470D0A
     1A0A0000000D49484452000001000000010008060000005C72A8660000325749
@@ -417,10 +418,10 @@ object Form2: TForm2
   OnCreate = FormCreate
   LCLVersion = '3.6.0.0'
   object Memo1: TMemo
-    Left = 13
-    Height = 179
-    Top = 6
-    Width = 461
+    Left = 26
+    Height = 358
+    Top = 12
+    Width = 922
     Lines.Strings = (
       'Memo1'
     )

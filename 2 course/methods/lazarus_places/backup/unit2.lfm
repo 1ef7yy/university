@@ -414,8 +414,8 @@ object Form2: TForm2
     525252525252525252525252525252525252B237F9FF329E31BBC383B5320000
     000049454E44AE426082
   }
-  LCLVersion = '4.0.0.4'
   OnCreate = FormCreate
+  LCLVersion = '3.6.0.0'
   object Memo1: TMemo
     Left = 13
     Height = 179

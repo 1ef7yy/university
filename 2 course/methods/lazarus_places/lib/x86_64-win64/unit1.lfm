@@ -1,11 +1,12 @@
 object Form1: TForm1
-  Left = 284
-  Height = 523
-  Top = 38
-  Width = 749
-  Caption = 'Известные города России'
-  ClientHeight = 523
-  ClientWidth = 749
+  Left = 1200
+  Height = 1046
+  Top = 210
+  Width = 1498
+  Caption = 'Известные исторические места России'
+  ClientHeight = 1046
+  ClientWidth = 1498
+  DesignTimePPI = 192
   Icon.Data = {
     A63200000000010001000000000001002000903200001600000089504E470D0A
     1A0A0000000D49484452000001000000010008060000005C72A8660000325749
@@ -419,13 +420,13 @@ object Form1: TForm1
   Position = poScreenCenter
   LCLVersion = '3.6.0.0'
   object ListBox1: TListBox
-    Left = 10
-    Height = 495
-    Top = 10
-    Width = 157
+    Left = 20
+    Height = 990
+    Top = 20
+    Width = 356
     Anchors = [akTop, akLeft, akBottom]
     Font.CharSet = RUSSIAN_CHARSET
-    Font.Height = -15
+    Font.Height = -30
     Font.Name = 'Verdana'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
@@ -436,31 +437,31 @@ object Form1: TForm1
     OnSelectionChange = ListBox1SelectionChange
   end
   object LabelName: TLabel
-    Left = 173
+    Left = 346
     Height = 1
-    Top = 221
-    Width = 556
+    Top = 442
+    Width = 1112
     Alignment = taCenter
     Anchors = [akTop, akLeft, akRight]
-    Font.Height = -21
+    Font.Height = -42
     Font.Style = [fsBold]
     ParentFont = False
   end
   object ImageDirector: TImage
-    Left = 179
-    Height = 206
-    Top = 10
-    Width = 550
+    Left = 398
+    Height = 412
+    Top = 20
+    Width = 1060
     Anchors = [akTop, akLeft, akRight]
     Center = True
     Proportional = True
     Stretch = True
   end
   object MemoDesc: TMemo
-    Left = 179
-    Height = 245
-    Top = 260
-    Width = 550
+    Left = 400
+    Height = 490
+    Top = 520
+    Width = 1058
     Anchors = [akTop, akLeft, akRight, akBottom]
     ReadOnly = True
     ScrollBars = ssAutoBoth
@@ -468,8 +469,8 @@ object Form1: TForm1
     WantReturns = False
   end
   object MainMenu1: TMainMenu
-    Left = 40
-    Top = 40
+    Left = 80
+    Top = 80
     object MenuItemHelp: TMenuItem
       Caption = 'Справка'
       object MenuItemContent: TMenuItem
@@ -491,14 +492,14 @@ object Form1: TForm1
     KeepConnection = False
     Transaction = SQLTransaction1
     AlwaysUseBigint = False
-    Left = 120
-    Top = 40
+    Left = 240
+    Top = 80
   end
   object SQLTransaction1: TSQLTransaction
     Active = False
     Database = SQLite3Connection1
-    Left = 120
-    Top = 96
+    Left = 240
+    Top = 192
   end
   object SQLQuery1: TSQLQuery
     FieldDefs = <>
@@ -506,7 +507,7 @@ object Form1: TForm1
     Transaction = SQLTransaction1
     Params = <>
     Macros = <>
-    Left = 120
-    Top = 152
+    Left = 240
+    Top = 304
   end
 end

@@ -1,5 +1,5 @@
 # 19
-from math import sqrt
+import math
 import numpy as np
 # 1
 R = 2
@@ -11,7 +11,7 @@ def f(x):
     elif -1 <= x and x <= 1:
         return 1
     elif 1 <= x and x <= 5:
-        return sqrt(R**2-(x-3)**2)
+        return math.sqrt(R**2-(x-3)**2)
     elif x >= 5 and x <= 7:
         return (x-5)/-2
 
@@ -62,4 +62,40 @@ for i in range(10):
 
 acc = float(input("Введите точность: "))
 
-def arcsin(x, xbegin, xend, eps)
+
+def arcsin(x, xbegin) -> (int, int):
+    if abs(x) >= 1:
+        raise Exception("|x| должен быть < 1")
+
+    result = x
+    term = x
+    n = 1
+    sum_terms = 1
+
+    while abs(term) > acc:
+        term *= (2*n - 1) * (2*n - 1) * x * x / (2*n * (2*n + 1))
+        result += term
+        n += 1
+        sum_terms += 1
+
+        if n > 1000:
+            break
+
+    return result, sum_terms
+
+
+print("\nРезультаты вычислений:")
+print("+" + "-"*12 + "+" + "-"*20 + "+" + "-"*25 + "+")
+print(f"| {'x':^10} | {'arcsin(x) (Тейлор)':^18} | {'Количество членов':^23} |")
+print("+" + "-"*12 + "+" + "-"*20 + "+" + "-"*25 + "+")
+
+
+x = x_begin
+while x <= x_end + 1e-10:
+    taylor_value, terms = arcsin(x, acc)
+    if taylor_value is not None:
+        print(f"| {x:^10.4f} | {taylor_value:^18.10f} | {terms:^23} |")
+
+    x += dx
+
+    print("+" + "-"*12 + "+" + "-"*20 + "+" + "-"*25 + "+")

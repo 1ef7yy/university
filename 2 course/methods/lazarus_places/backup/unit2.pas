@@ -31,11 +31,11 @@ implementation
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-   Memo1.Text := '10 ИЗВЕСТНЫХ ГОРОДОВ РОССИИ...' + LineEnding + LineEnding +
+   Memo1.Text := '10 ИЗВЕСТНЫХ ИСТОРИЧЕСКИХ МЕСТ РОССИИ...' + LineEnding + LineEnding +
              'Функции:' + LineEnding +
-             '1. Просмотр списка известных городов...' + LineEnding +
-             '2. Информация о городах...' + LineEnding +
-             '3. Фотографии городов...';
+             '1. Просмотр списка известных исторических мест...' + LineEnding +
+             '2. Информация о них...' + LineEnding +
+             '3. Фотографии мест...';
   Memo1.ReadOnly := True;
   Caption := 'Содержание...';
   BorderStyle := bsSingle;
