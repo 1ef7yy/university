@@ -107,7 +107,8 @@ class ZodiacApp:
                         f"{person.birthday[0]};{person.birthday[1]};{person.birthday[2]}\n"
                     )
             return True
-        except Exception:
+        except Exception as e:
+            print(e)
             return False
 
     def sort_data(self):
