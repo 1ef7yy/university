@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Лента записей</h1>
+    {% for post in posts %}
+      <article>
+        <h2>{{ post.location }}</h2>
+        <p>{{ post.date }}</p>
+        <p>{{ post.text|truncatewords:10 }}</p>
+        <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
+      </article>
+      <hr>
+    {% endfor %}
+  </div>
+{% endblock %}
